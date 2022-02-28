@@ -14,7 +14,7 @@
 
 ## Environment variables
 
-Copy '''env.example''' and rename it to '''env'''
+Copy `.env.example` and rename it to `.env`
 
 ## `yarn`
 
