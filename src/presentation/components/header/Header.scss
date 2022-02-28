@@ -1,0 +1,10 @@
+header {
+  background-color: $primary;
+  height: 0;
+}
+
+header > .content {
+  align-items: center;
+  display: flex;
+  height: 100%;
+}

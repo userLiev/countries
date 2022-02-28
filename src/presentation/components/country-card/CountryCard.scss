@@ -1,0 +1,19 @@
+.country-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 4px 2px rgba(0, 0, 0, 0.6);
+  max-width: calc(100vw - 16px);
+  padding: 8px;
+  width: 400px;
+}
+
+.country-card > .header {
+  align-items: center;
+  display: flex;
+  margin-bottom: 1em;
+}
+
+.country-card > .header > .header-content {
+  flex: 1;
+  margin-left: 1em;
+}
