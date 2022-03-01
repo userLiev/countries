@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { ContinentsEnum } from '../../pages/home/Home';
-import { useHomeContext } from '../../pages/home/HomeProvider';
 import Pressable from '../pressable/Pressable';
 import Africa from './Africa';
 import Asia from './Asia';
@@ -9,9 +8,22 @@ import NorthAmerica from './NorthAmerica';
 import Oceania from './Oceania';
 import SouthAmerica from './SouthAmerica';
 
-const Continents: FC = () => {
-  const { continent, onContinent, continentData } = useHomeContext();
+type Props = {
+  continentData?: {
+    code: string;
+    name: string;
+  };
 
+  continent: ContinentsEnum | '';
+
+  onContinent: (value: ContinentsEnum) => void;
+}
+
+const Continents: FC<Props> = ({
+  continentData,
+  continent,
+  onContinent,
+}) => {
   return (
     <div className="continent-section">
       <div className="continent-container">

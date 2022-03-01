@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import Continents from '../../components/continents/Continents';
 import Countries from '../../components/countries/Countries';
-import Pressable from '../../components/pressable/Pressable';
 import HomeProvider, { useHomeContext } from './HomeProvider';
 
 const CountryPage: FC = () => {
@@ -17,13 +16,19 @@ const CountryContent: FC = () => {
     country,
     countries,
     selected,
+    continent,
+    continentData,
     onSelect,
+    onContinent,
   } = useHomeContext();
 
   return (
     <>
-      <Continents />
-      <Pressable className="europe-aux" />
+      <Continents
+        continent={continent}
+        onContinent={onContinent}
+        continentData={continentData}
+      />
       <Countries
         countries={countries}
         country={country}
