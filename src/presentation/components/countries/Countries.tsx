@@ -28,7 +28,6 @@ const Countries: FC<Props> = ({
 
   return (
     <section className="countries-section">
-      <h2>Countries</h2>
       <div className="countries-container">
         {
           countries.map((c) => {

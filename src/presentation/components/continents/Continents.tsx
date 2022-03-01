@@ -48,8 +48,10 @@ const Continents: FC<Props> = ({
       </div>
 
       {
-        continentData && (
+        continentData ? (
           <h1 style={{ textAlign: 'center' }}>{continentData.name} ({continentData.code})</h1>
+        ) : (
+          <h1 style={{ textAlign: 'center' }}>Select a continent</h1>
         )
       }
     </div>
