@@ -1,6 +1,6 @@
 import { ApolloProvider } from '@apollo/client';
 import { FC } from 'react';
-import client from './client/client';
+import client from './infra/client/client';
 import Router from './presentation/Router';
 import './index.scss';
 

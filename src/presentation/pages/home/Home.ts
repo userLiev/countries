@@ -1,16 +1,35 @@
-import { ApolloError } from '@apollo/client';
-import { Country } from '../../../api/country/Country.entity';
+import { Data } from './../../../domain/entities/data';
+import { Country } from '../../../infra/api/country/Country.entity';
 
-export type CountryProviderInterface = {
-  country?: Country;
+export enum ContinentsEnum {
+  EU = 'EU',
+  AF = 'AF',
+  NA = 'NA',
+  SA = 'SA',
+  AS = 'AS',
+  OC = 'OC',
+  AN = 'AN'
+}
+
+export type HomeProviderInterface = {
+  country: Data<Country>;
 
   countries?: Country[];
 
-  error?: ApolloError;
+  errorMsg?: string;
 
   loading: boolean;
 
   selected: string;
 
+  continent: ContinentsEnum | '';
+
+  continentData?: {
+    code: string;
+    name: string;
+  };
+
   onSelect: (value: string) => void;
+
+  onContinent: (value: ContinentsEnum) => void;
 }

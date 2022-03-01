@@ -1,4 +1,4 @@
-import { Country } from './../country/Country.entity';
+import { Country } from '../country/Country.entity';
 
 export type StringQueryOperatorInput = {
   eq?: string;

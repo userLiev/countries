@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { FC } from 'react';
-import { useClickOutside } from '../../../hooks/useClickOutside';
+import { useClickOutside } from '../../hooks/useClickOutside';
 
 type Props = {
   active?: boolean;

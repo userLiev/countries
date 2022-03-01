@@ -1,46 +1,74 @@
-import { CountryProviderInterface } from './Home';
+import { ContinentsEnum, HomeProviderInterface } from './Home';
 import { FC, createContext, useMemo, useContext, useState, useCallback } from 'react';
-import { useCountry } from '../../../api/country/Country.hook';
-import { useCountries } from '../../../api/countries/Countries.hook';
+import { useCountry } from '../../../infra/api/country/Country.hook';
+import { useCountries } from '../../../infra/api/countries/Countries.hook';
+import { useContinent } from '../../../infra/api/continent/Continent.hook';
 
-const CountryContext = createContext<CountryProviderInterface>({} as CountryProviderInterface);
+const HomeContext = createContext<HomeProviderInterface>({} as HomeProviderInterface);
 
-export function useCountryContext(): CountryProviderInterface {
-  return useContext(CountryContext);
+export function useHomeContext(): HomeProviderInterface {
+  return useContext(HomeContext);
 };
 
-const CountryProvider: FC = ({ children }) => {
+const HomeProvider: FC = ({ children }) => {
+  const [continent, setContinent] = useState<ContinentsEnum | ''>('');
+
   const [selected, setSelected] = useState('');
 
   const countryQuery = useCountry(selected);
+
   const countriesQuery = useCountries({});
 
+  const continentQuery = useContinent(continent);
+
   const country = useMemo(() => {
-    return countryQuery.data?.country;
-  }, [countryQuery.data?.country]);
+    return {
+      data: countryQuery.data?.country,
+      loading: countryQuery.loading,
+      errorMsg: countryQuery.error?.message,
+    };
+  }, [countryQuery.data?.country, countryQuery.error?.message, countryQuery.loading]);
+
+  const continentData = useMemo(() => {
+    return continentQuery.data?.continent;
+  }, [continentQuery.data?.continent]);
 
   const countries = useMemo(() => {
-    return countriesQuery.data?.countries;
-  }, [countriesQuery.data?.countries]);
+    return countriesQuery.data?.countries.filter((c) => {
+      return c.continent.code === continent;
+    });
+  }, [continent, countriesQuery.data?.countries]);
 
   const onSelect = useCallback((value: string) => {
     setSelected(value);
   }, [])
 
+  const onContinent = useCallback((value: ContinentsEnum) => {
+    setContinent((old) => {
+      if (old === value) {
+        return '';
+      }
+      return value
+    });
+  }, []);
+
   return (
-    <CountryContext.Provider
+    <HomeContext.Provider
       value={{
         country,
         countries,
-        error: countryQuery.error,
+        errorMsg: countryQuery.error?.message,
         loading: countryQuery.loading,
         selected,
+        continent,
+        continentData,
         onSelect,
+        onContinent,
       }}
     >
       {children}
-    </CountryContext.Provider>
+    </HomeContext.Provider>
   );
 };
 
-export default CountryProvider;
+export default HomeProvider;

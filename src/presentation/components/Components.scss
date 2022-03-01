@@ -1,8 +1,16 @@
-@import 'country-card/CountryCard';
+// Simple
+
 @import 'emoji/Emoji';
+@import 'pressable/Pressable';
+@import 'modal/Modal';
+@import 'preview/Preview';
+
+// Complex
+
+@import 'continents/Continents';
+@import 'countries/Countries';
+@import 'country-card/CountryCard';
 @import 'footer/Footer';
 @import 'header/Header';
 @import 'layout/Layout';
 @import 'main/Main';
-@import 'modal/Modal';
-@import 'pressable/Pressable';

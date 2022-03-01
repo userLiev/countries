@@ -1,5 +1,5 @@
+import { Continent } from '../continents/Continents.entity';
 import { Language } from './Language.entity';
-import { Continent } from "./Continent.entity"
 
 export type Country = {
   code: string;
@@ -14,7 +14,6 @@ export type Country = {
   emojiU: string;
 
 }
-
 
 export type CountryInput = {
   code: string;

@@ -22,6 +22,8 @@ export const countryData = `
 
 `;
 
+
+
 export const COUNTRY_GQL = gql`
   query Country (
     $code: ID!

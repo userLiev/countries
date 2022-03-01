@@ -1,15 +1,14 @@
 import { FC } from 'react';
-import CountryCard from '../../components/country-card/CountryCard';
-import Emoji from '../../components/emoji/Emoji';
-import Modal from '../../components/modal/Modal';
+import Continents from '../../components/continents/Continents';
+import Countries from '../../components/countries/Countries';
 import Pressable from '../../components/pressable/Pressable';
-import CountryProvider, { useCountryContext } from './HomeProvider';
+import HomeProvider, { useHomeContext } from './HomeProvider';
 
 const CountryPage: FC = () => {
   return (
-    <CountryProvider>
+    <HomeProvider>
       <CountryContent />
-    </CountryProvider>
+    </HomeProvider>
   )
 };
 
@@ -19,23 +18,19 @@ const CountryContent: FC = () => {
     countries,
     selected,
     onSelect,
-  } = useCountryContext();
+  } = useHomeContext();
 
   return (
-    <div className="countries-container">
-      {
-        countries?.map((c) => {
-          return (
-            <Pressable key={c.code} onClick={() => onSelect(c.code)}>
-              <Emoji emoji={c.emoji} />
-            </Pressable>
-          );
-        })
-      }
-      <Modal active={selected !== ''} onClose={() => onSelect('')}>
-        <CountryCard country={country} />
-      </Modal>
-    </div>
+    <>
+      <Continents />
+      <Pressable className="europe-aux" />
+      <Countries
+        countries={countries}
+        country={country}
+        active={selected !== ''}
+        onSelect={onSelect}
+      />
+    </>
   );
 }
 

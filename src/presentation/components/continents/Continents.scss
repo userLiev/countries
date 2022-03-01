@@ -1,0 +1,71 @@
+.continent-section {
+  margin: 0 auto;
+  max-width: 640px;
+  padding: 1em;
+}
+
+.continent-container {
+  margin: 0 auto 1em;
+  padding-bottom: 52.6%;
+  position: relative;
+  width: 100%;
+}
+
+.continent-item {
+  position: absolute;
+  transition: transform 0.2s linear;
+
+  &:hover {
+    transform: scale(1.12);
+    z-index: 1;
+  }
+}
+
+.continent {
+  fill: #fff;
+  transition: fill 0.2s linear;
+
+  &.active {
+    fill: $primary;
+  }
+
+  &:hover {
+    filter: brightness(80%);
+  }
+}
+
+.africa {
+  bottom: calc(100% * 172 / 1000);
+  left: calc(100% * 40 / 100);
+  width: calc(100% * 22 / 100);
+}
+
+.asia {
+  right: calc(100% * 87 / 1000);
+  top: calc(100% * 54 / 1000);
+  width: calc(100% * 387 / 1000);
+}
+
+.europe {
+  left: calc(100% * 426 / 1000);
+  top: calc(100% * 5 / 100);
+  width: calc(100% * 193 / 1000);
+}
+
+.oceania {
+  bottom: calc(100% * 95 / 1000);
+  right: calc(100% * 17 / 1000);
+  width: calc(100% * 185 / 1000);
+}
+
+.south-america {
+  bottom: calc(100% * 33 / 1000);
+  left: calc(100% * 187 / 1000);
+  width: calc(100% * 146 / 1000);
+}
+
+.north-america {
+  left: calc(100% * 22 / 1000);
+  top: calc(100% * 413 / 10000);
+  width: calc(100% * 42 / 100);
+}
